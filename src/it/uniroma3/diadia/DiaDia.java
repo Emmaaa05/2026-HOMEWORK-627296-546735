@@ -153,13 +153,13 @@ public class DiaDia {
 	 	e lo fa prendere dal giocatore, altrimenti stampa messaggio di errore.
 		*/
 		
-		private void posa() {
+		 private void posa() {
 			Borsa b = this.partita.getGiocatore().getBorsa();
 			if(b.isEmpty()) {
 				io.mostraMessaggio("La borsa e' vuota");
 				return;}
 		
-			String nomeAtt = "null";
+			String nomeAtt;
 			io.mostraMessaggio("Quale attrezzo vuoi posare?");
 			nomeAtt=io.leggiRiga();
 			if(!b.hasAttrezzo(nomeAtt)){
@@ -171,14 +171,12 @@ public class DiaDia {
 					io.mostraMessaggio("Non puoi posare attrezzi in questa stanza, perche' e' piena!");
 					return;
 				} else{
-				if(this.partita.getStanzaCorrente().addAttrezzo(attrezzo)){
-					if(b.removeAttrezzo(nomeAtt) != null);
-					io.mostraMessaggio(partita.getStanzaCorrente().getAttrezzi());
+					b.removeAttrezzo(nomeAtt);
+					io.mostraMessaggio(partita.getStanzaCorrente().toString());
 					io.mostraMessaggio("Hai preso l'attrezzo dalla tua borsa e l'hai posato nella stanza!");
 				}
 			}
 		}
-	}
 	
 	/**
 	 * Comando "Fine".
