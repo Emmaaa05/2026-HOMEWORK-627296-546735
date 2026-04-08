@@ -119,7 +119,7 @@ public class DiaDia {
 	 altrimenti stampa messaggio di errore. 
 	 */
 	 
-	 private void prendi() {
+	private void prendi() {
 	 	Stanza s=this.partita.getStanzaCorrente();
 		if(s.getNumeroAttrezzi()==0) {
 			io.mostraMessaggio("Non ci sono attrezzi da in questa stanza");
@@ -134,18 +134,19 @@ public class DiaDia {
 		if(!s.hasAttrezzo(nomeAtt)){ 
 			io.mostraMessaggio("L'attrezzo non e' presente nella stanza corrente");
 			return;
-		} else if(b.getPeso() >= b.getPesoMax()){
+		}
+		Attrezzo attrezzo= s.getAttrezzo(nomeAtt);
+		if(b.getPeso() + attrezzo.getPeso() > b.getPesoMax()){
 			io.mostraMessaggio("La borsa e' piena, non puo' contenere ulteriori attrezzi");
 			return;
 		} else{
-			Attrezzo attrezzo= s.getAttrezzo(nomeAtt);
-			if(this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo))
-				if(s.removeAttrezzo(nomeAtt) != null){
-					io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
-					io.mostraMessaggio("Hai preso l'attrezzo e l'hai messo nella tua borsa!");
-				}	
-			}
-		}
+				if(b.addAttrezzo(attrezzo)) {
+				s.removeAttrezzo(nomeAtt);
+				io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
+				io.mostraMessaggio("Hai preso l'attrezzo e l'hai messo nella tua borsa!");
+				}
+	 		}
+	 }
 		
 		/*Comando "Posa"
 		Chiede all'utente l'attrezzo che vuole posare. Controlla se
