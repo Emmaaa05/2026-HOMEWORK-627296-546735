@@ -2,7 +2,7 @@
 
 
 
-/**
+/**a
  * Una semplice classe che modella un attrezzo.
  * Gli attrezzi possono trovarsi all'interno delle stanze
  * del labirinto.
