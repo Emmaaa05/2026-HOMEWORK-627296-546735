@@ -58,9 +58,9 @@ public class Borsa {
 		for (int i=0; i<numeroAttrezzi; i++) {
 			if (this.attrezzi[i].getNome().equals(nomeAttrezzo)){
 			rimosso = attrezzi[i];
-			for(int j=i; j<numeroAttrezzi; j++)
+			for(int j=i; j<numeroAttrezzi-1; j++)
 				attrezzi[j]=attrezzi[j+1];
-			}
+				}
 			attrezzi[numeroAttrezzi-1]=null;
 			this.numeroAttrezzi--;
 			this.pesoMax=this.getPeso() - rimosso.getPeso();
