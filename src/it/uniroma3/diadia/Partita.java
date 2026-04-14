@@ -51,6 +51,10 @@ public class Partita {
 		return this.getStanzaCorrente()== this.getStanzaVincente();
 	}
 
+	public Giocatore getGiocatore(){
+		return this.giocatore();
+		}
+	
 	/**
 	 * Restituisce vero se e solo se la partita e' finita
 	 * @return vero se partita finita
